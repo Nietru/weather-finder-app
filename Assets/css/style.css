@@ -163,6 +163,10 @@ textarea {
   /* 2 */
 }
 
+.card-title {
+  font-size: larger;
+  font-weight: bolder;
+}
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.

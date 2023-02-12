@@ -21,7 +21,6 @@
       <div class="col-sm-4" id="sidebar">
         <h5 id="search-header">Search for a City:</h5>
         <div class="input-group">
-          <!-- search input -->
           <input
             class="form-control"
             id="cityenter"
@@ -59,7 +58,7 @@
       </div>
             <!-- Main View -->
             <div class="col-sm-8">
-              <!-- Current Conditions View -->
+              <!-- Current City Conditions Section-->
               <div class="card card-body-color" id="current-view">
                   <div class="card-body">
                       <h2 id="namecity" class="card-title cityn">City name :</h2>
@@ -71,27 +70,25 @@
                       <hr>
                       <h6 class="card-subtitle mb-2 "> Wind Speed <span id="windspeed"></span></h6>
                       <hr>
-                      <h6 class="card-subtitle mb-2 "> UV Index <span id="uv-index"></span></h6>
 
                   </div>
                   <!-- <div class="card-title " id="cityinfos">
                   </div> -->
               </div>
               <!-- 5 Day Forecast -->
-              <!-- Dates and weather stats dynamically set -->
               <div id="five-day">
               </div>
           </div>
       </div>
       <div class='row'>
-          <div class="col-sm-12 center">
-              <h5 class="text-white">5 Days Forecast</h5>
+          <div class="col-sm-12 text-center">
+              <h5 class>5 Days Forecast</h5>
           </div>
       </div>
       <div class="row justify-content-end">
           <div class="col-sm">
               <div class="card five-cards">
-                  <!-- id's are numbered 0-4 to make loop easier, see script.js -->
+                  <!-- id's are numbered 0-4 to make loop easier for 5-day forecast, see js file. -->
                   <div class="card-title" id="day0">Date</div>
                   <img class="icons" id="icon0">
                   <p id="highday0">High:</p>
