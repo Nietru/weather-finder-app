@@ -14,9 +14,8 @@ $("input").keyup(function () {
     $clicked.click();
   }
 });
-// Seachcityname function
 function citysearch() {
-  // saved city enter by USer in a let
+  // saved city enter by User in a let
   let cityname = $(this).parent().siblings("#cityenter").val().toLowerCase();
   // empty search bar with setTimeout() so the City name is not gonna stuck on input section
   function clear() {
@@ -46,10 +45,7 @@ function citysearch() {
     $("#tempcity").text($currentTemp);
     $("#humcity").text($currentHum);
     $("#windspeed").text($currentWind);
-    $("#weathericon").attr({
-      src: $currentIconURL,
-      alt: "Current Weather Icon",
-    });
+
     // lat & lon for secondQueryURL below
     let lat = response.coord.lat;
     let lon = response.coord.lon;
