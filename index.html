@@ -16,9 +16,10 @@
       <h1 class="flex-row bg-primary">Weather Dashboard</h1>
     </header>
     <div class="row">
-      <!-- City Search container on left. -->
+      <!-- city search container -->
       <div class="col-sm-4" id="sidebar">
-        <h5 id="search-header">Search for a City:</h5>
+        <h3 id="search-header">Search for a City:</h3>
+        <!--user input-->
         <div class="input-group">
           <input
             class="form-control"
@@ -26,7 +27,7 @@
             type="text"
             placeholder="city name"
           />
-          <!-- append search button to input -->
+          <!-- append search button to user input -->
           <div class="history-search-btns">
             <button class="btn buttonsearch" type="button">Search
             </button>
@@ -60,7 +61,7 @@
               <!-- Current City Conditions Section-->
               <div class="card card-body-color" id="current-view">
                   <div class="card-body">
-                      <h2 id="namecity" class="card-title cityn">City name :</h2>
+                      <h3 id="namecity" class="card-title cityn">City name :</h3>
                       <p id="currentdate" class="cd"></p>
                       <h6 class="card-subtitle mb-2 "> Temperature  <span id="tempcity"></span></h6>
                       <hr>
@@ -68,10 +69,7 @@
                       <hr>
                       <h6 class="card-subtitle mb-2 "> Wind Speed <span id="windspeed"></span></h6>
                       <hr>
-
                   </div>
-                  <!-- <div class="card-title " id="cityinfos">
-                  </div> -->
               </div>
               <!-- 5 Day Forecast -->
               <div id="five-day">
@@ -80,7 +78,7 @@
       </div>
       <div class='row'>
           <div class="col-sm-12 text-center">
-              <h5 class>5 Days Forecast</h5>
+              <h3 class>5-Day Forecast:</h3>
           </div>
       </div>
       <div class="row justify-content-end">

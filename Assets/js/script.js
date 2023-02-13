@@ -4,29 +4,30 @@ let $cityDate = moment().format("llll");
 $("#currentdate").text($cityDate);
 
 /* City Search*/
-// click listener calls citysearch() and soon a function related to the .search-history sidebar
+// click listener calls citysearch() and soon a function related to the .search-history
 let $clicked = $(".buttonsearch");
 $clicked.on("click", citysearch);
 $clicked.on("click", searchSave);
 // add Enter key for searching as well
-$("input").keyup(function () {
+$("input").keyup(function (event) {
   if (event.key === "Enter") {
     $clicked.click();
   }
 });
 function citysearch() {
-  // saved city enter by User in a let
-  let cityname = $(this).parent().siblings("#cityenter").val().toLowerCase();
-  // empty search bar with setTimeout() so the City name is not gonna stuck on input section
+  // saved city entered by User in a let variable
+  let cityname = $(this).parent().siblings("#cityenter").val().toUpperCase();
+  // empty search bar with setTimeout() so the City name is not stuck in input section
   function clear() {
     $("#cityenter").val("");
   }
-  setTimeout(clear, 300);
+  setTimeout(clear, 500);
   //Query for Current Weather Using API URL And Ajax
   let firstQueryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityname +
-    "&units=imperial&appid=b560802e22d3b5c9a667a84cd007a9bd";
+    "&units=imperial&appid=e1fc2300851704e2cfd8faddcf2d77ec";
+  // using ajax to get a json response
   $.ajax({
     url: firstQueryURL,
     method: "GET",
@@ -62,7 +63,7 @@ function citysearch() {
     }).then(function (response) {
       console.log(response);
       let $uv = response.current.uvi;
-      // var for displaying in html & grabbing the right color class
+      // var for displaying in html
       let $uvIndex = $("#uv-index");
       $uvIndex.text($uv);
       $uvIndex.blur();
@@ -100,7 +101,7 @@ function citysearch() {
       // Date Assignment - convert UNIX response to human readable
       // array to hold timestamps
       let days = [];
-      // get UNIX dt from response, skipping [0] as it is current day
+      // get UNIX date from response, skipping [0] as it is current day
       for (i = 1; i < 6; i++) {
         days[i] = response.daily[i].dt;
       }
@@ -144,25 +145,25 @@ function citysearch() {
       for (i = 0; i < hums.length; i++) {
         $("#humday" + i).text("Humidity: " + hums[i]);
       }
-      // and again for icons, w/ extra step
-      let icons = [];
-      // each icon will need its own concatenated URL
-      let iconsURL = [];
-      for (i = 1; i < 6; i++) {
-        icons[i] = response.daily[i].weather[0].icon;
-      }
-      icons = icons.filter((item) => item);
-      // filling iconsURL[] w/ unique URLs using icons[] indices
-      for (i = 0; i < icons.length; i++) {
-        iconsURL[i] = "http://openweathermap.org/img/w/" + icons[i] + ".png";
-      }
-      for (i = 0; i < iconsURL.length; i++) {
-        $("#icon" + i).attr({ src: iconsURL[i], alt: "Daily Weather Icon" });
-      }
+      // COULD NOT FIX ERROR WITH ICONS...
+      // let icons = [];
+      // // each icon will need its own concatenated URL
+      // let iconsURL = [];
+      // for (i = 1; i < 6; i++) {
+      //   icons[i] = response.daily[i].weather[0].icon;
+      // }
+      // icons = icons.filter((item) => item);
+      // // filling iconsURL[] w/ unique URLs using icons[] indices
+      // for (i = 0; i < icons.length; i++) {
+      //   iconsURL[i] = "http://openweathermap.org/img/w/" + icons[i] + ".png";
+      // }
+      // for (i = 0; i < iconsURL.length; i++) {
+      //   $("#icon" + i).attr({ src: iconsURL[i], alt: "Daily Weather Icon" });
+      // }
     });
   });
 }
-// fillFromStorage fills sidebar with anthything in localStorage
+//---------- SEARCH HISTORY LOCALSTORAGE FUNCTION ---------//
 $(document).ready(function () {
   // if localStorage is not empty, call fillFromStorage()
   if (localStorage.getItem("cities")) {
@@ -180,12 +181,12 @@ $(document).ready(function () {
     let lastIndex = historydisplay.length - 1;
     // concat a jQuery selector & click listener that calls savedsearch()
     $("#search" + lastIndex).on("click", savedsearch);
-    // .trigger() method that 'clicks' on that #searchx
+    // .trigger() method that 'clicks' on that #search
     $("#search" + lastIndex).trigger("click");
   }
 });
 
-// Array to display the list of HISTORY
+//---- ARRAY TO DISPLAY RECENT SEARCH HISTORY ----//
 let historydisplay = [];
 // Function to Load Seach In local Storage and Display on HTML page
 function searchSave() {
