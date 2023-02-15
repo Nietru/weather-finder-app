@@ -37,9 +37,10 @@ function citysearch() {
     let $currentTemp = parseInt(response.main.temp) + "°F";
     let $currentHum = response.main.humidity + "%";
     let $currentWind = parseInt(response.wind.speed) + "mph";
-    let $currentIcon = response.weather[0].icon;
-    let $currentIconURL =
-      "http://openweathermap.org/img/w/" + $currentIcon + ".png";
+    // THIS WAS NOT WORKING, THROWING ERROR.
+    // let $currentIcon = response.weather[0].icon;
+    // let $currentIconURL =
+    //   "http://openweathermap.org/img/w/" + $currentIcon + ".png";
 
     // display in html
     $("#namecity").text(cityname);
@@ -93,7 +94,6 @@ function citysearch() {
         );
       }
       // .btn-climate-change, like .btn-hazard, is custom
-      // and it's funny because it is sad :(
       else if ($uv >= 11) {
         $uvIndex.addClass("btn-climate-change");
         $uvIndex.removeClass("btn-success btn-warning btn-hazard btn-danger");
